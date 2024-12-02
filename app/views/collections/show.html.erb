@@ -1,0 +1,3 @@
+<%= render "collections/show_admin" if signed_in? %>
+
+<%= link_to "Invoice", new_invoice_path(collection_id: @collection.id, collection_name: @collection.title) unless signed_in? %>

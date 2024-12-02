@@ -1,0 +1,36 @@
+<div class="d-flex p-2">
+  <h3>Collections</h3>
+</div>
+<div class="d-flex p-2">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Publish?</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% (signed_in? ? @collections : @collections.where(publish: true)).each do |collection| %>
+      <tr>
+        <th scope="row"><%= collection.id %></th>
+        <td><a href="/collections/<%= collection.id %>">
+          <%= collection.title %>
+        </a></td>
+        <td> <%= collection.publish %></td>
+        <td>
+          <%= link_to "Delete", collection, data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %>
+          |
+          <%= link_to "Edit",
+                      edit_collection_path(collection.id),
+                      class: "link active" %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

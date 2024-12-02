@@ -1,0 +1,26 @@
+<h2>Add a plate:</h2>
+<%# if @collection.plates.errors.any? %>
+<!--  <div id="error_explanation" data-turbo-cache="false">-->
+<%# @collection.plates.errors.full_messages.each do |message| %>
+<!--      <div class="alert alert-danger" role="alert"><%#= message %></div>-->
+<%# end %>
+<!--  </div>-->
+<%# end %>
+
+<%= form_with model: [ @collection, @collection.plates.build ] do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, required: true %>
+  </p>
+  <p>
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
+  </p>
+  <p>
+    <%= form.label :order, "Order #" %><br>
+    <%= form.number_field :order, required: true  %>
+  </p>
+  <p>
+    <%= form.submit "Add plate" %>
+  </p>
+<% end %>

@@ -1,0 +1,24 @@
+<h3 class="text-center">Log in</h3>
+<div class="d-flex justify-content-center align-items-center">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.label :email, class:"form-label" %><br />
+      <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter email"%>
+    </div>
+    <br/>
+    <div class="form-group">
+      <%= f.label :password, class: "form-label" %><br />
+      <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+    </div>
+    <br/>
+    <div class="text-center">
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    </div>
+    <br/>
+    <div class="text-center">
+      <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+    </div>
+    <br/>
+
+  <% end %>
+</div>

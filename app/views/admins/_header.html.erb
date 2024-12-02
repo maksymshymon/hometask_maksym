@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Shop Admin Panel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Home",
+                      admins_index_path,
+                      class: "nav-link active" %>
+        </li>
+        <% if admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Invoices",
+                        invoices_path,
+                        class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "All Collections",
+                        collections_path,
+                        class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "New collection",
+                        new_collection_path,
+                        class: "nav-link active",
+                        data_no_turbolink: true %>
+          </li>
+        <% end %>
+      </ul>
+      <div class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Welcome</a>
+          </li>
+        </ul>
+        <% if admin_signed_in? %>
+          <%= link_to "Sign out", destroy_admin_session_path, data: { "turbo-method": :delete }, class: "btn btn-outline-success" %>
+        <% else %>
+          <%= link_to "Sign In",
+                      new_admin_session_path,
+                      class: "btn btn-outline-success" %>
+          <br/>
+          <%= link_to "Sign Up",
+                      new_admin_registration_path,
+                      class: "btn btn-outline-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>

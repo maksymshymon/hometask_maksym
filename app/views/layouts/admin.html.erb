@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hometask</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= render "home/bootstrap" %>
+    <script src="https://cdn.tiny.cloud/1/qilmdz4d9waqpw3poxud4rtj4xc2kcakt1zdaf6pjb4blna0/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '.tinymce',
+            height: 250,
+            menubar: false,
+            plugins: 'lists link image table code help wordcount',
+        });
+    </script>
+  </head>
+
+  <body>
+    <%= render "admins/header" %>
+    <%= yield %>
+    <%= render "home/footer" %>
+  </body>
+</html>
